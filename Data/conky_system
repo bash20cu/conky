@@ -1,0 +1,55 @@
+conky.config = {
+-- ------------------------- Windows Settings
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+
+	double_buffer = true,
+	background = true,
+
+-- ------------------------- Position
+	alignment = 'bottom_right',
+
+	minimum_width = 240,
+	minimum_height = 165,
+	maximum_width = 313,
+	gap_x = 120,
+	gap_y = 275,
+
+-- ------------------------- Font
+	use_xft = true,
+	xftalpha = 0.8,
+	override_utf8_locale = true,
+
+	draw_shades = true,
+	default_shade_color = 'grey',
+
+	draw_borders = false,
+	draw_outline = false,
+
+	font = 'Bazlikin:size=8',
+
+-- ------------------------ Colors
+	default_color = 'FFFFFF',
+	color0 = '00cbcb',
+
+-- ------------------------- Other
+	update_interval = 1,
+};
+
+conky.text = [[
+
+${voffset 25}${GOTO 50}${font Soviet:size=10}${color}SYSTEM
+${GOTO 50}${font}${color}Uptime: ${font Bazlikin:size=8}${color0}${uptime_short}${alignr}(${color0}${exec /home/paulgrey/Downloads/ConkyBar/scripts/uptime.sh}${color0})
+
+
+${font Bazlikin:size=8}${GOTO 50}${font}${color}Processes: ${font Bazlikin:size=8}${color0}${processes} (${color0}${running_processes} ${color}running)
+${GOTO 50}${font}${color}Threads: ${font Bazlikin:size=8}${color0}${running_threads}
+${GOTO 50}${font}${color}Connections: ${font Bazlikin:size=8}${color0}${tcp_portmon 1 65535 count}
+
+${GOTO 50}${font}${color}GPU: ${font Bazlikin:size=8}${color0}${nvidia temp}°C | ${font Bazlikin:size=8}${color0}${nvidia gpufreq}Mhz | ${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t}MiB
+
+]];

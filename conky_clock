@@ -1,0 +1,49 @@
+conky.config = {
+-- ------------------------- Windows Settings
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+
+
+	double_buffer = true,
+	background = true,
+
+-- ------------------------- Position
+	alignment = 'top_right',
+
+	minimum_width = 820,
+	minimum_height = 600,
+	maximum_width = 785,
+	gap_x = 5,
+	gap_y = 5,
+
+-- ------------------------- Font
+	use_xft = true,
+	xftalpha = 0.8,
+	override_utf8_locale = true,
+
+	draw_borders = false,
+	draw_outline = false,
+	draw_shades = false,
+
+-- ------------------------- Color
+	default_color = 'DDDDDD',
+	color0 = '00cbcb',
+	color1 = 'b82c47',
+	color2 = 'AAAAAA',
+	color3 = '888888',
+
+-- ------------------------- Other
+	update_interval = 1,
+
+};
+
+conky.text = [[
+
+${offset 490}${color1}${font Soviet:pixelsize=130}${time %H:%M}${voffset 20}${offset -480}${font Autography:pixelsize=80}${color0}${time %A}${font Autography:pixelsize=70}${color0}${font Autography:bold:pixelsize=80}${time %d}${font Autography:pixelsize=70}${time  %B}${time %Y}
+
+
+]];

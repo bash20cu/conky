@@ -1,0 +1,54 @@
+conky.config = {
+-- ------------------------- Windows Settings
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+
+	double_buffer = true,
+	background = true,
+
+-- ------------------------- Position
+	alignment = 'bottom_right',
+
+	minimum_width = 295,
+	minimum_height = 165,
+	maximum_width = 313,
+	gap_x = 586,
+	gap_y = 280,
+
+-- ------------------------- Font
+	use_xft = true,
+	xftalpha = 0.8,
+	override_utf8_locale = true,
+
+	draw_shades = true,
+	default_shade_color = 'grey',
+
+	draw_borders = false,
+	draw_outline = false,
+
+	font = 'Bazlikin:size=8',
+
+-- ------------------------- Color
+	default_color = 'FFFFFF',
+    color0 = '00cbcb',
+
+--------------------------- OTHER
+	update_interval = 1,
+
+   	lua_load = '/home/paulgrey/Downloads/ConkyBar/lua/io_graph.lua',
+	lua_draw_hook_pre = 'main_graph',
+
+
+};
+
+conky.text = [[
+
+${GOTO 50}${font Soviet:size=10}FILE SYSTEM
+${GOTO 50}${font}${color}Hdd: ${font Bazlikin:size=8}${color0}${fs_used /}${GOTO 200}${font}${color}Temp: ${font Bazlikin:size=8}${color0}${hddtemp /dev/sda} °C
+${GOTO 50}${font}${color}Read: ${font Bazlikin:size=8}${color0}${diskio_read}${GOTO 200}${font}${color}Write: ${font Bazlikin:size=8}${color0}${diskio_write}
+
+]];

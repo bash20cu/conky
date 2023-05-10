@@ -1,0 +1,63 @@
+conky.config = {
+-- ------------------------- Windows Settings
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+
+	double_buffer = true,
+	background = true,
+
+-- ------------------------- Position
+	alignment = 'bottom_right',
+
+	minimum_width = 255,
+	minimum_height = 165,
+	maximum_width = 313,
+	gap_x = 353,
+	gap_y = 275,
+
+-- ------------------------- Font
+	use_xft = true,
+	xftalpha = 0.8,
+	override_utf8_locale = true,
+
+	draw_shades = true,
+	default_shade_color = 'grey',
+
+	draw_borders = false,
+	draw_outline = false,
+
+	font = 'Bazlikin:size=8',
+
+-- ------------------------- Color
+	default_color = 'FFFFFF',
+	color0 = 'FFFFFF',
+	color1 = '00cbcb',
+	color2 = '00cbcb',
+	color3 = '00cbcb',
+
+-- ------------------------- OTHER
+	update_interval = 1,
+
+	top_cpu_separate = false,
+	cpu_avg_samples = 2,
+	--top_name_verbose = false,
+
+	template0 = [[${GOTO 50}${color\1}${top name \2}${alignr}${top cpu \2}%]],
+
+};
+
+conky.text = [[
+
+${voffset 25}${GOTO 50}${font Soviet:size=10}${color0}CPU
+${GOTO 50}${font}${color0}Avg use: ${font Bazlikin:size=8}${color1}${cpu cpu0}%${alignr}${font}${color0}Freq: ${font Bazlikin:size=8}${color1}${freq_g} Ghz
+${voffset 27}${template0 0 1}
+${template0 1 2}
+${template0 2 3}
+${template0 3 4}
+${template0 3 5}
+
+]];
