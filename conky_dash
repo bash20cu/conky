@@ -42,8 +42,8 @@ conky.config = {
 
 
 conky.text = [[
-${voffset 120}
-${offset 100}
+${voffset 100}
+${offset 80}
 #${image /home/evan/Pictures/home.png -p 70,50 -s 140x120}${voffset -30}
 
 ${color0}
@@ -57,8 +57,6 @@ Host:$alignr$nodename
 Uptime:$alignr$uptime
 File System: $alignr${fs_type}
 Processes: $alignr ${execi 1000 ps aux | wc -l}
-
-
 #----------PROCESADOR-----------
 ${color4}${font stargate:bold:size=10}PROCESADOR${color1}${hr 2 }${color2}
 ${font sans-serif:normal:size=8}${execi 1000 grep model /proc/cpuinfo | cut -d : -f2 | tail -1 | sed 's/\s//'}
@@ -67,44 +65,35 @@ ${font sans-serif:normal:size=8}CPU1: ${cpu cpu1}% ${color3}${cpubar}${color2}
 ${font sans-serif:normal:size=8}CPU2: ${cpu cpu2}% ${color3}${cpubar}${color2}
 ${font sans-serif:normal:size=8}CPU3: ${cpu cpu3}% ${color3}${cpubar}${color2}
 ${font sans-serif:normal:size=8}CPU4: ${cpu cpu4}% ${color3}${cpubar}${color2}
-
 #----------TEMPERATURA-----------
 ${color4}${font stargate:bold:size=10}TEMPERATURA${color1}${hr 2 }${color2}
 ${font sans-serif:normal:size=8}Temp1: ${execi 10 sensors | grep 'Core 0' | awk '{print $3}'} ${font sans-serif:normal:size=8} | Temp2: ${execi 10 sensors | grep 'Core 1' | awk '{print $3}'}${font sans-serif:normal:size=8}
 Temp3: ${execi 10 sensors | grep 'Core 2' | awk '{print $3}'} ${font sans-serif:normal:size=8} | Temp4: ${execi 10 sensors | grep 'Core 3' | awk '{print $3}'}
-
 #---- MEMORIA RAM  --- 
 ${color4}${font stargate:bold:size=10}MEMORIA RAM${color1}${hr 2}${color2}
 ${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
 ${color3}${membar}${color2}
 SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
 ${color3}${swapbar}{color2}
-
 #----TARJETA GRAFICA ---
 #${color4}${font stargate:bold:size=10}NVIDIA GPU ${color1}${hr 2}${color2}
 #${font sans-serif:normal:size=8}
 #Temperature:${alignr}${execi 60 nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader} C
 #Utilization:${alignr}${execi 60 nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader}% 
-
 #----ESPACIO DE DISCO---
 ${color4}${font stargate:bold:size=10}ESPACIO DE DISCO${color1}${hr 2}
 ${color2}${font sans-serif:normal:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${color3}${fs_bar /}{color2}
-
 ${color2}${font sans-serif:normal:size=8}/home/casa $alignc ${fs_used /home/casa} / ${fs_size /home/casa} $alignr ${fs_used_perc /home/casa}%
 ${color3}${fs_bar /}{color2}
-
 ${color2}${font sans-serif:normal:size=8}/home/casa/datos  $alignc ${fs_used /home/casa/datos} / ${fs_size /home/casa/datos} $alignr ${fs_used_perc /home/casa/datos}%
 ${color3}${fs_bar /}{color2}
-
 #-----REDES ----
-${color4}${font stargate:bold:size=10}REDES${color1}${hr 2}${color2}
-${font sans-serif:normal:size=8}Local IPs:${alignr}External IP:
-${execi 1000 ip a | grep inet | grep -vw lo | grep -v inet6 | cut -d \/ -f1 | sed 's/[^0-9\.]*//g'}  ${alignr}${execi 1000  wget -q -O- http://ipecho.net/plain; echo}
+${color4}${font stargate:bold:size=10}ACTIVIDAD EN LA RED${color1}${hr 2}${color2}
 ${font sans-serif:normal:size=8}Down: ${downspeed wlp3s0}  ${alignr}Up: ${upspeed wlp3s0} 
 ${downspeedgraph wlp3s0 20,150 } ${alignr}${upspeedgraph wlp3s0 20,150 }
-
-${color4}${font stargate:bold:size=10}TOP PROCESSES ${color1}${hr 2}${color2}
+#-----PROCESOS -------
+${color4}${font stargate:bold:size=10}PROCESOS${color1}${hr 2}${color2}
 ${font sans-serif:normal:size=8}Name $alignr PID   CPU%   MEM%${font sans-serif:normal:size=8}
 ${top name 1} $alignr ${top pid 1} ${top cpu 1}% ${top mem 1}%
 ${top name 2} $alignr ${top pid 2} ${top cpu 2}% ${top mem 2}%
